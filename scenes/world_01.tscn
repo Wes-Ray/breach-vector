@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cl3atig440jk"]
+
+[ext_resource type="PackedScene" uid="uid://wk8ox7egbudr" path="res://scenes/ship.tscn" id="1_06uiu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ykne3"]
+albedo_color = Color(1, 0.294118, 1, 1)
+
+[node name="World01" type="Node3D"]
+
+[node name="Ship" parent="." instance=ExtResource("1_06uiu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.694527, 1.76686, -0.0966633)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.976444, 0.821886, -1.43493)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00821, -0.286133, -1.69241)
+material_override = SubResource("StandardMaterial3D_ykne3")
+size = Vector3(9.76471, 0.427734, 16.7939)

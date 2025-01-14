@@ -1,3 +1,26 @@
-[gd_scene format=3 uid="uid://bsmy180vdg1uv"]
+[gd_scene load_steps=4 format=3 uid="uid://wk8ox7egbudr"]
 
-[node name="Node3D" type="Node3D"]
+[ext_resource type="PackedScene" uid="uid://ltiaynj28e4m" path="res://assets/ship/plane01.glb" id="1_fgnbo"]
+[ext_resource type="Script" path="res://scripts/ship.gd" id="1_mn80g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vhwgl"]
+size = Vector3(0.686783, 0.122101, 1)
+
+[node name="Ship" type="CharacterBody3D"]
+collision_layer = 2
+script = ExtResource("1_mn80g")
+
+[node name="plane01" parent="." instance=ExtResource("1_fgnbo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.113965, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000938416, 0.0450897, 0)
+shape = SubResource("BoxShape3D_vhwgl")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.999289, -0.0377076, 0, 0.0377076, 0.999289, 0, 0.162934, -1.9401)
+collision_mask = 0
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, -6.46508e-09, 0.997262, 0.0739518, 8.71834e-08, 0.0739518, -0.997262, 0, 0, 0)
+fov = 90.0
