@@ -1,12 +1,16 @@
 extends CharacterBody3D
 
-@onready var spring_arm_3d: SpringArm3D = $SpringArm3D
-@onready var camera_3d: Camera3D = $SpringArm3D/Camera3D
+@onready var yaw: Node3D = %Yaw
+@onready var pitch: Node3D = %Pitch
 
 var rotation_speed = 0.005
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion and event.button_mask == MOUSE_BUTTON_LEFT:
-		spring_arm_3d.rotate_y(-event.relative.x * rotation_speed)
-		spring_arm_3d.rotate_x(-event.relative.y * rotation_speed)
-		# rotation.x = clamp(rotation.x, -TAU/4, TAU/4)
+func _input(event:InputEvent) -> void:
+	if not event is InputEventMouseMotion:
+		return
+		
+	var mouse_movement:Vector2 = event.relative / 300 * PI
+	yaw.rotate_y(-mouse_movement.x )
+	pitch.rotate_x(mouse_movement.y)
+
+	pitch.rotation.x = clamp(pitch.rotation.x, -TAU/4, TAU/4)

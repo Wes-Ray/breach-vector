@@ -17,10 +17,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.113965, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000938416, 0.0450897, 0)
 shape = SubResource("BoxShape3D_vhwgl")
 
-[node name="SpringArm3D" type="SpringArm3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.999289, -0.0377076, 0, 0.0377076, 0.999289, 0, 0.162934, -1.9401)
-collision_mask = 0
+[node name="Yaw" type="Node3D" parent="."]
+unique_name_in_owner = true
 
-[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
-transform = Transform3D(-1, 0, -8.74228e-08, -6.46508e-09, 0.997262, 0.0739518, 8.71834e-08, 0.0739518, -0.997262, 0, 0, 0)
-fov = 90.0
+[node name="Pitch" type="Node3D" parent="Yaw"]
+unique_name_in_owner = true
+
+[node name="Camera3D" type="Camera3D" parent="Yaw/Pitch"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.269066, -0.88717)
+fov = 85.0
