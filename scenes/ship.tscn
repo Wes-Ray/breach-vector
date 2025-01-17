@@ -4,26 +4,20 @@
 [ext_resource type="Script" path="res://scripts/ship.gd" id="1_mn80g"]
 [ext_resource type="PackedScene" uid="uid://dvjd7ddx35hq6" path="res://scenes/Debug.tscn" id="3_brax1"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_vhwgl"]
-size = Vector3(0.686783, 0.122101, 1)
+[sub_resource type="SphereShape3D" id="SphereShape3D_xy6oo"]
 
 [node name="Ship" type="CharacterBody3D"]
 motion_mode = 1
 script = ExtResource("1_mn80g")
 
-[node name="Body" type="CharacterBody3D" parent="."]
+[node name="Body" type="Node3D" parent="."]
 unique_name_in_owner = true
-motion_mode = 1
 
 [node name="BodyModel" type="Node3D" parent="Body"]
 unique_name_in_owner = true
 
 [node name="plane01" parent="Body/BodyModel" instance=ExtResource("1_fgnbo")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.113965, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000938416, 0.0450897, 0)
-shape = SubResource("BoxShape3D_vhwgl")
 
 [node name="CameraRig" type="Node3D" parent="."]
 unique_name_in_owner = true
@@ -101,3 +95,6 @@ bbcode_enabled = true
 text = "[b]Left Click[/b] to Hide Cursor
 [b]A[/b] and [b]D[/b] to Roll Plane
 [b]W[/b] to Throttle"
+
+[node name="TEMP_REMOVE_LATER" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_xy6oo")

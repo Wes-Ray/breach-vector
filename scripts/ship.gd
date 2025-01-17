@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-@onready var body: CharacterBody3D = %Body
+@onready var body: Node3D = %Body
 @onready var body_model: Node3D = %BodyModel
 
 @onready var camera_rig: Node3D = %CameraRig
@@ -29,29 +29,55 @@ func move_ship(delta) -> void:
 	var throttle_input := Input.get_axis("throttle_down", "throttle_up")
 	debug.log("throttle", throttle_input)
 
+	# relative basis for camera and ship
+	var ship_basis := body.global_basis
+	var camera_basis := camera_rig.global_basis
+	var relative_basis := ship_basis.inverse() * camera_basis
+
+	# roll based on a and d 
+	# TODO: set up so ship rolls, then camera aligns (or vice versa, perhaps)
+	camera_rig.rotate(camera_rig.basis.z.normalized(), roll_input * roll_speed * delta)
+	body.rotate(body.basis.z.normalized(), roll_input * roll_speed * delta)
+
+
+	# yaw towards camera angle (I don't want to scale based on the angle so that the player isn't 
+	# incentivized to move their camera a longgg distance just to turn faster)
+	# get angle between camera in ship space (not world space)
+	var yaw_angle := relative_basis.get_euler().y
+	debug.log("yaw", yaw_angle)
+
+	var yaw_threshold := 0.01
+	var within_yaw_threshold := yaw_angle > -yaw_threshold and yaw_angle < yaw_threshold
+	if within_yaw_threshold:
+		debug.log("TEST", "zero")
+		pass
+	elif yaw_angle > 0:
+		debug.log("TEST", "POSITIVE")
+		body.rotate(ship_basis.y.normalized(), 0.01)
+	else:
+		debug.log("TEST", "NEGATIVE")
+		body.rotate(ship_basis.y.normalized(), -0.01)
+	
+	# pitch towards camera angle
+	var pitch_angle := relative_basis.get_euler().x
+	debug.log("pitch", pitch_angle)
+
+	var pitch_threshold := 0.01
+	var within_pitch_threshold := pitch_angle > -pitch_threshold and pitch_angle < pitch_threshold
+	if within_pitch_threshold:
+		pass
+	elif pitch_angle > 0:
+		body.rotate(ship_basis.x.normalized(), 0.01)
+	else:
+		body.rotate(ship_basis.x.normalized(), -0.01)
+
+
+	# update movement based on body direction (NOT self of the whole ship)
 	if throttle_input > 0.01:
 		current_air_speed = base_air_boost_speed
 	else:
 		current_air_speed = base_air_speed
 
-	# roll
-	# camera_rig.rotate(body_model.basis.z.normalized(), roll_input * delta)
-	camera_rig.rotate(camera_rig.basis.z.normalized(), roll_input * roll_speed * delta)
-
-	# Get Euler angles
-	# var camera_euler := camera_rig.global_transform.basis.get_euler()
-	# var current_euler := body.global_transform.basis.get_euler()
-
-	# Create new quaternions with roll (z) set to 0
-	# var camera_no_roll := Quaternion.from_euler(Vector3(camera_euler.x, camera_euler.y, 0))
-	# var current_no_roll := Quaternion.from_euler(Vector3(current_euler.x, current_euler.y, 0))
-
-	# Lerp between the roll-free rotations
-	# var lerp_quat = current_no_roll.slerp(camera_no_roll, delta * rotation_speed)
-	body.global_transform.basis = Basis(camera_rig.basis)
-
-
-	# update movement based on body direction (NOT self of the whole ship)
 	var forward := -body.basis.z
 	velocity = forward * current_air_speed
 
