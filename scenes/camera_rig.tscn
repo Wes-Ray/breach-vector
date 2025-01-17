@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bag23ibu3ddf1"]
+
+[ext_resource type="Script" path="res://scripts/camera_rig.gd" id="1_6dard"]
+[ext_resource type="PackedScene" uid="uid://bv2g21feowrn3" path="res://scenes/hud.tscn" id="2_6g51f"]
+[ext_resource type="PackedScene" uid="uid://dvjd7ddx35hq6" path="res://scenes/Debug.tscn" id="3_d6b4q"]
+
+[node name="CameraRig" type="Node3D"]
+script = ExtResource("1_6dard")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.338774, -0.948969)
+fov = 85.0
+
+[node name="HUD" parent="." instance=ExtResource("2_6g51f")]
+
+[node name="Debug" parent="." instance=ExtResource("3_d6b4q")]

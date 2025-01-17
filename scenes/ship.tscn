@@ -1,100 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://wk8ox7egbudr"]
+[gd_scene load_steps=4 format=3 uid="uid://wk8ox7egbudr"]
 
 [ext_resource type="PackedScene" uid="uid://ltiaynj28e4m" path="res://assets/ship/plane01.glb" id="1_fgnbo"]
 [ext_resource type="Script" path="res://scripts/ship.gd" id="1_mn80g"]
-[ext_resource type="PackedScene" uid="uid://dvjd7ddx35hq6" path="res://scenes/Debug.tscn" id="3_brax1"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_xy6oo"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_2d3l7"]
+size = Vector3(0.6922, 0.0853882, 0.848694)
 
 [node name="Ship" type="CharacterBody3D"]
 motion_mode = 1
 script = ExtResource("1_mn80g")
 
-[node name="Body" type="Node3D" parent="."]
-unique_name_in_owner = true
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00558472, -0.000823975, -0.00430298)
+shape = SubResource("BoxShape3D_2d3l7")
 
-[node name="BodyModel" type="Node3D" parent="Body"]
-unique_name_in_owner = true
-
-[node name="plane01" parent="Body/BodyModel" instance=ExtResource("1_fgnbo")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.113965, 0)
-
-[node name="CameraRig" type="Node3D" parent="."]
-unique_name_in_owner = true
-
-[node name="Camera3D" type="Camera3D" parent="CameraRig"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.269, 0.998)
-current = true
-fov = 85.0
-
-[node name="Debug" parent="." instance=ExtResource("3_brax1")]
-
-[node name="HUD" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Crosshair" type="Control" parent="HUD"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="HUD/Crosshair"]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 18.0
-offset_right = 36.0
-offset_bottom = 22.0
-
-[node name="ColorRect2" type="ColorRect" parent="HUD/Crosshair"]
-layout_mode = 0
-offset_left = 18.0
-offset_top = 4.0
-offset_right = 22.0
-offset_bottom = 36.0
-
-[node name="Info" type="Control" parent="HUD"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -192.0
-offset_bottom = 152.0
-grow_horizontal = 0
-
-[node name="ColorRect" type="ColorRect" parent="HUD/Info"]
-layout_mode = 0
-offset_left = -224.0
-offset_top = 8.0
-offset_right = 184.0
-offset_bottom = 160.0
-color = Color(0.130772, 0.130772, 0.130772, 0.788235)
-
-[node name="Label" type="RichTextLabel" parent="HUD/Info"]
-layout_mode = 0
-offset_left = -208.0
-offset_top = 16.0
-offset_right = 172.0
-offset_bottom = 157.0
-theme_override_font_sizes/bold_italics_font_size = 32
-theme_override_font_sizes/normal_font_size = 32
-theme_override_font_sizes/bold_font_size = 32
-bbcode_enabled = true
-text = "[b]Left Click[/b] to Hide Cursor
-[b]A[/b] and [b]D[/b] to Roll Plane
-[b]W[/b] to Throttle"
-
-[node name="TEMP_REMOVE_LATER" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_xy6oo")
+[node name="Model" parent="." instance=ExtResource("1_fgnbo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.113965, 0)
