@@ -2,8 +2,8 @@ extends Node3D
 class_name CameraRig
 
 @export var track_target : Ship
-@export var mouse_sensitivity := 0.1
-@export var track_target_speed := 10.0
+@export var mouse_sensitivity := 0.5
+@export var track_target_speed := 50.0
 @export var roll_speed := 5.0
 
 func _ready() -> void:
@@ -30,7 +30,7 @@ func _input(event: InputEvent) -> void:
     if not event is InputEventMouseMotion:
         return
     
-    var mouse_movement:Vector2 = (event.relative / 300 * PI) * mouse_sensitivity
+    var mouse_movement:Vector2 = event.relative * 0.001 * mouse_sensitivity
     
     rotate(basis.y.normalized(), -mouse_movement.x)  # yaw
     rotate(basis.x.normalized(), mouse_movement.y)  # pitch

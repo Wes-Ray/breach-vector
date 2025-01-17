@@ -6,9 +6,9 @@ class_name Ship
 @export var top_speed := 10.0
 
 @export_category("rotation speed")
-@export var pitch_speed := 2.0
-@export var yaw_speed := 2.0
-@export var roll_speed := 2.0
+@export var pitch_speed := 20.0
+@export var yaw_speed := 0.5
+@export var roll_speed := 20.0
 
 func _ready() -> void:
 	assert(camera_rig, "camera rig must be added before adding to scene")
