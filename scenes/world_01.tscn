@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://wk8ox7egbudr" path="res://scenes/ship.tscn" id="1_06uiu"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_ng0kn"]
 [ext_resource type="PackedScene" uid="uid://bag23ibu3ddf1" path="res://scenes/camera_rig.tscn" id="3_ii3dd"]
-[ext_resource type="PackedScene" uid="uid://bv2g21feowrn3" path="res://scenes/hud.tscn" id="4_q4yem"]
+[ext_resource type="PackedScene" uid="uid://bv2g21feowrn3" path="res://scenes/hud.tscn" id="4_v7otb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ykne3"]
 albedo_color = Color(1, 0.294118, 1, 1)
@@ -13,8 +13,7 @@ script = ExtResource("1_ng0kn")
 spawn_point = NodePath("spawn01")
 ship_scene = ExtResource("1_06uiu")
 camera_scene = ExtResource("3_ii3dd")
-
-[node name="HUD" parent="." instance=ExtResource("4_q4yem")]
+hud_scene = ExtResource("4_v7otb")
 
 [node name="spawn01" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.694527, 1.76686, -0.0966633)

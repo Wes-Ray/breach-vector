@@ -1,6 +1,8 @@
 extends CharacterBody3D
 class_name Ship
 
+signal player_crashed
+
 @export var camera_rig : CameraRig
 
 @export var top_speed := 20.
@@ -50,4 +52,5 @@ func _process(delta: float) -> void:
 
 func _on_collision_area_body_entered(_body: Node3D) -> void:
 	# TODO: add explodies
+	player_crashed.emit()
 	queue_free()

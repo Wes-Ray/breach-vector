@@ -34,18 +34,19 @@ text = "[i]Game Paused[/i]
 "
 
 [node name="LaunchButton" type="Button" parent="Menu"]
+unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 offset_left = -247.0
-offset_top = -422.0
+offset_top = -91.5
 offset_right = 247.0
-offset_bottom = -239.0
+offset_bottom = 91.5
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 theme = ExtResource("2_exetk")
 theme_override_font_sizes/font_size = 160
 text = "LAUNCH"
@@ -79,8 +80,8 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -603.0
-offset_top = 12.0
-offset_bottom = 266.0
+offset_top = 22.0
+offset_bottom = 276.0
 grow_horizontal = 0
 theme = ExtResource("2_exetk")
 theme_override_font_sizes/italics_font_size = 60
@@ -139,16 +140,19 @@ offset_right = 22.0
 offset_bottom = 36.0
 
 [node name="Debug" type="Control" parent="."]
+layout_mode = 1
 anchors_preset = 0
 offset_left = 10.0
-offset_top = 10.0
+offset_top = 285.0
 offset_right = 10.0
-offset_bottom = 10.0
+offset_bottom = 285.0
 
 [node name="DebugLabel" type="RichTextLabel" parent="Debug"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_right = 265.0
 offset_bottom = 235.0
+text = "debug"
 
 [connection signal="button_up" from="Menu/LaunchButton" to="." method="_on_launch_button_button_up"]
+[connection signal="button_up" from="Menu/ButtonsContainer/RestartButton" to="." method="_on_restart_button_button_up"]
