@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://bv2g21feowrn3"]
+[gd_scene load_steps=3 format=3 uid="uid://bv2g21feowrn3"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_pr8ck"]
+[ext_resource type="Theme" uid="uid://u8gurxp0xst7" path="res://resources/themes/base.tres" id="2_exetk"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -7,8 +10,107 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_pr8ck")
+
+[node name="Menu" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StatusLabel" type="RichTextLabel" parent="Menu"]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 28.0
+offset_top = 14.0
+offset_right = 1255.0
+offset_bottom = 516.0
+theme = ExtResource("2_exetk")
+bbcode_enabled = true
+text = "[i]Game Paused[/i]
+"
+
+[node name="LaunchButton" type="Button" parent="Menu"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -247.0
+offset_top = -422.0
+offset_right = 247.0
+offset_bottom = -239.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_exetk")
+theme_override_font_sizes/font_size = 160
+text = "LAUNCH"
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="Menu"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -118.0
+offset_right = 508.0
+offset_bottom = -19.0
+grow_vertical = 0
+theme_override_constants/separation = 16
+alignment = 2
+
+[node name="RestartButton" type="Button" parent="Menu/ButtonsContainer"]
+layout_mode = 2
+theme = ExtResource("2_exetk")
+text = "RESTART"
+
+[node name="ExitButton" type="Button" parent="Menu/ButtonsContainer"]
+layout_mode = 2
+theme = ExtResource("2_exetk")
+text = "EXIT"
+
+[node name="Info" type="RichTextLabel" parent="Menu"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -603.0
+offset_top = 12.0
+offset_bottom = 266.0
+grow_horizontal = 0
+theme = ExtResource("2_exetk")
+theme_override_font_sizes/italics_font_size = 60
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[i]Left Click[/i]  to Hide Cursor
+[i]A[/i]  and [i]D[/i]  to Roll Plane
+[i]W[/i]  to Throttle"
+
+[node name="ColorRect" type="ColorRect" parent="Menu"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 271.0
+grow_horizontal = 2
+color = Color(0.130772, 0.130772, 0.130772, 0.788235)
+
+[node name="ColorRect2" type="ColorRect" parent="Menu"]
+visible = false
+z_index = -1
+layout_mode = 0
+offset_left = -80.0
+offset_top = 1073.0
+offset_right = 2512.0
+offset_bottom = 1392.0
+color = Color(0.130772, 0.130772, 0.130772, 0.788235)
 
 [node name="Crosshair" type="Control" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -36,33 +138,17 @@ offset_top = 4.0
 offset_right = 22.0
 offset_bottom = 36.0
 
-[node name="Info" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -192.0
-offset_bottom = 152.0
-grow_horizontal = 0
+[node name="Debug" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 10.0
+offset_bottom = 10.0
 
-[node name="ColorRect" type="ColorRect" parent="Info"]
+[node name="DebugLabel" type="RichTextLabel" parent="Debug"]
+unique_name_in_owner = true
 layout_mode = 0
-offset_left = -224.0
-offset_top = 8.0
-offset_right = 184.0
-offset_bottom = 160.0
-color = Color(0.130772, 0.130772, 0.130772, 0.788235)
+offset_right = 265.0
+offset_bottom = 235.0
 
-[node name="Label" type="RichTextLabel" parent="Info"]
-layout_mode = 0
-offset_left = -208.0
-offset_top = 16.0
-offset_right = 172.0
-offset_bottom = 157.0
-theme_override_font_sizes/bold_italics_font_size = 32
-theme_override_font_sizes/normal_font_size = 32
-theme_override_font_sizes/bold_font_size = 32
-bbcode_enabled = true
-text = "[b]Left Click[/b] to Hide Cursor
-[b]A[/b] and [b]D[/b] to Roll Plane
-[b]W[/b] to Throttle"
+[connection signal="button_up" from="Menu/LaunchButton" to="." method="_on_launch_button_button_up"]

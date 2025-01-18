@@ -8,6 +8,7 @@ extends Node3D
 func _ready() -> void:
 	assert(spawn_point, "spawn point must be assigned to main script")
 	spawn_player()
+	Logger.log("TEST", true)
 
 func spawn_player() -> void:
 	var ship_instance: Ship = ship_scene.instantiate()
