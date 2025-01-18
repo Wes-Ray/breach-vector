@@ -2,15 +2,16 @@ extends Node3D
 class_name CameraRig
 
 @export var track_target : Ship
-@export var mouse_sensitivity := 0.5
-@export var track_target_speed := 50.0
-@export var roll_speed := 5.0
+@export var mouse_sensitivity := 1.0
+# @export var track_target_speed := 25.0
+@export var roll_speed := 5.
 
 func _ready() -> void:
     assert(track_target, "there must be a track target assigned before entering scene")
 
 func _process(delta: float) -> void:
-    position = position.lerp(track_target.position, delta * track_target_speed)
+    # position = position.lerp(track_target.position, delta * track_target_speed)
+    position = track_target.position
 
     # roll camera
     var roll_input := Input.get_axis("roll_left", "roll_right")
@@ -32,6 +33,6 @@ func _input(event: InputEvent) -> void:
     
     var mouse_movement:Vector2 = event.relative * 0.001 * mouse_sensitivity
     
-    rotate(basis.y.normalized(), -mouse_movement.x)  # yaw
+    rotate(basis.y.normalized(), -mouse_movement.x * (9.0/16.0))  # yaw
     rotate(basis.x.normalized(), mouse_movement.y)  # pitch
 

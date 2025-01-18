@@ -8,7 +8,7 @@
 script = ExtResource("1_6dard")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.338774, -0.948969)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.201419, -1.96218)
 fov = 85.0
 
 [node name="HUD" parent="." instance=ExtResource("2_6g51f")]
