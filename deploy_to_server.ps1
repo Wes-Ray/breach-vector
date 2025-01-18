@@ -5,8 +5,8 @@ $BUILD_PATH = "C:\Users\wes\Documents\windev\breach-vector\output\web"
 $REMOTE_SERVER = "blog"
 $REMOTE_PATH = "/home/wes/blog/games"
 # $PROJECT_NAME = "breach-vector"  # production name
-$PROJECT_NAME = "breach-vector-dev"  # dev name
-# $PROJECT_NAME = "breach-vector-day2"  # daily name
+# $PROJECT_NAME = "breach-vector-dev"  # dev name
+$PROJECT_NAME = "breach-vector-day4"  # daily name
 
 # Remove existing build directory if it exists
 if (Test-Path $BUILD_PATH) {
@@ -31,8 +31,10 @@ if ($buildProcess.ExitCode -eq 0) {
    # Execute rsync command through WSL
    wsl rsync -avz --delete --include="${PROJECT_NAME}.*" --exclude="*" "${wslSource}/" "${REMOTE_SERVER}:${REMOTE_PATH}/"
    
+   Write-Host
    Write-Host "[*] Deployment for '$PROJECT_NAME' complete!"
 } else {
+   Write-Host
    Write-Host "[!] Build failed with exit code: $($buildProcess.ExitCode)"
    exit 1
 }

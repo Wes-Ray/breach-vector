@@ -79,16 +79,16 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -603.0
-offset_top = 22.0
-offset_bottom = 276.0
+offset_left = -743.0
+offset_top = 12.0
+offset_right = 182.0
+offset_bottom = 266.0
 grow_horizontal = 0
 theme = ExtResource("2_exetk")
-theme_override_font_sizes/italics_font_size = 60
-theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/italics_font_size = 100
+theme_override_font_sizes/normal_font_size = 70
 bbcode_enabled = true
-text = "[i]Left Click[/i]  to Hide Cursor
-[i]A[/i]  and [i]D[/i]  to Roll Plane
+text = "[i]A[/i]  and [i]D[/i]  to Roll Plane
 [i]W[/i]  to Throttle"
 
 [node name="ColorRect" type="ColorRect" parent="Menu"]
