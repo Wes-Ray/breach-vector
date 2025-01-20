@@ -5,8 +5,8 @@ $BUILD_PATH = "C:\Users\wes\Documents\windev\breach-vector\output\web"
 $REMOTE_SERVER = "blog"
 $REMOTE_PATH = "/home/wes/blog/games"
 # $PROJECT_NAME = "breach-vector"  # production name
-# $PROJECT_NAME = "breach-vector-dev"  # dev name
-$PROJECT_NAME = "breach-vector-day4"  # daily name
+$PROJECT_NAME = "breach-vector-dev"  # dev name
+# $PROJECT_NAME = "breach-vector-day4"  # daily name
 
 # Remove existing build directory if it exists
 if (Test-Path $BUILD_PATH) {

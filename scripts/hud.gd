@@ -7,6 +7,8 @@ class_name HUD
 @onready var crosshair := %Crosshair
 @onready var launch_button := %LaunchButton
 @onready var debug_node := $Debug
+@onready var invert_check := %InvertCheckButton
+@onready var sens_spinbox := %SensSpinBox
 
 func _ready() -> void:
 	# keeps this script functioning when paused
@@ -15,6 +17,9 @@ func _ready() -> void:
 
 	if not OS.is_debug_build():
 		debug_node.hide()
+
+	sens_spinbox.value = GameConfig.mouse_sens
+	invert_check.button_pressed = GameConfig.mouse_inverted
 
 func _process(_delta: float) -> void:
 	update_debug_label()
@@ -70,3 +75,9 @@ func on_player_crashed() -> void:
 	status_label.text = "[color=red]CRASHED[/color]"
 	launch_button.hide()	
 	pause()
+
+func _on_sens_spin_box_value_changed(value:float) -> void:
+	GameConfig.mouse_sens = value
+
+func _on_invert_check_button_toggled(toggled_on:bool) -> void:
+	GameConfig.mouse_inverted = toggled_on

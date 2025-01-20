@@ -10,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_exetk")
 script = ExtResource("1_pr8ck")
 
 [node name="Menu" type="Control" parent="."]
@@ -28,7 +29,6 @@ offset_left = 28.0
 offset_top = 14.0
 offset_right = 1255.0
 offset_bottom = 516.0
-theme = ExtResource("2_exetk")
 bbcode_enabled = true
 text = "[i]Game Paused[/i]
 "
@@ -47,7 +47,6 @@ offset_right = 247.0
 offset_bottom = 91.5
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_exetk")
 theme_override_font_sizes/font_size = 160
 text = "LAUNCH"
 
@@ -66,12 +65,10 @@ alignment = 2
 
 [node name="RestartButton" type="Button" parent="Menu/ButtonsContainer"]
 layout_mode = 2
-theme = ExtResource("2_exetk")
 text = "RESTART"
 
 [node name="ExitButton" type="Button" parent="Menu/ButtonsContainer"]
 layout_mode = 2
-theme = ExtResource("2_exetk")
 text = "EXIT"
 
 [node name="Info" type="RichTextLabel" parent="Menu"]
@@ -84,7 +81,6 @@ offset_top = 12.0
 offset_right = 182.0
 offset_bottom = 266.0
 grow_horizontal = 0
-theme = ExtResource("2_exetk")
 theme_override_font_sizes/italics_font_size = 100
 theme_override_font_sizes/normal_font_size = 70
 bbcode_enabled = true
@@ -150,9 +146,70 @@ offset_bottom = 285.0
 [node name="DebugLabel" type="RichTextLabel" parent="Debug"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_right = 265.0
-offset_bottom = 235.0
+offset_right = 540.0
+offset_bottom = 451.0
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
 text = "debug"
+
+[node name="Settings" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="Settings"]
+layout_mode = 0
+offset_left = -365.0
+offset_top = -103.0
+offset_right = 27.0
+offset_bottom = 29.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Settings/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 4
+
+[node name="VBoxContainer" type="GridContainer" parent="Settings/PanelContainer/MarginContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="SensLabel" type="RichTextLabel" parent="Settings/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 48
+text = "Sensitivity"
+
+[node name="SensSpinBox" type="SpinBox" parent="Settings/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+max_value = 20.0
+step = 0.1
+
+[node name="InvertLabel" type="RichTextLabel" parent="Settings/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 48
+text = "Invert Mouse"
+
+[node name="InvertCheckButton" type="CheckBox" parent="Settings/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+
+[node name="Control" type="Control" parent="Settings/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
 
 [connection signal="button_up" from="Menu/LaunchButton" to="." method="_on_launch_button_button_up"]
 [connection signal="button_up" from="Menu/ButtonsContainer/RestartButton" to="." method="_on_restart_button_button_up"]
+[connection signal="value_changed" from="Settings/PanelContainer/MarginContainer/VBoxContainer/SensSpinBox" to="." method="_on_sens_spin_box_value_changed"]
+[connection signal="toggled" from="Settings/PanelContainer/MarginContainer/VBoxContainer/InvertCheckButton" to="." method="_on_invert_check_button_toggled"]
