@@ -5,7 +5,7 @@ signal player_crashed
 
 @export var camera_rig : CameraRig
 
-@export var top_speed := 20.
+@export var top_speed := 50.
 
 @export_category("rotation speed")
 @export var pitch_speed := 3.5

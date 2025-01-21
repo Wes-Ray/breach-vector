@@ -9,6 +9,7 @@ class_name HUD
 @onready var debug_node := $Debug
 @onready var invert_check := %InvertCheckButton
 @onready var sens_spinbox := %SensSpinBox
+@onready var setting_root := %Settings
 
 func _ready() -> void:
 	# keeps this script functioning when paused
@@ -54,12 +55,15 @@ func toggle_pause() -> void:
 
 func pause() -> void:
 	menu.show()
+	setting_root.show()
 	crosshair.hide()
+
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	get_tree().paused = true
 
 func unpause() -> void:
 	menu.hide()
+	setting_root.hide()
 	crosshair.show()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	get_tree().paused = false

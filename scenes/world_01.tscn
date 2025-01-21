@@ -1,12 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://cl3atig440jk"]
+[gd_scene load_steps=9 format=3 uid="uid://cl3atig440jk"]
 
 [ext_resource type="PackedScene" uid="uid://wk8ox7egbudr" path="res://scenes/ship.tscn" id="1_06uiu"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_ng0kn"]
 [ext_resource type="PackedScene" uid="uid://bag23ibu3ddf1" path="res://scenes/camera_rig.tscn" id="3_ii3dd"]
 [ext_resource type="PackedScene" uid="uid://bv2g21feowrn3" path="res://scenes/hud.tscn" id="4_v7otb"]
+[ext_resource type="PackedScene" uid="uid://cr5g8ofx5565a" path="res://scenes/test_01.tscn" id="5_ksmgo"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ykne3"]
-albedo_color = Color(1, 0.294118, 1, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_83qld"]
+
+[sub_resource type="Sky" id="Sky_xbcvb"]
+sky_material = SubResource("ProceduralSkyMaterial_83qld")
+
+[sub_resource type="Environment" id="Environment_8n0tx"]
+background_mode = 2
+sky = SubResource("Sky_xbcvb")
 
 [node name="World01" type="Node3D" node_paths=PackedStringArray("spawn_point")]
 script = ExtResource("1_ng0kn")
@@ -16,85 +23,13 @@ camera_scene = ExtResource("3_ii3dd")
 hud_scene = ExtResource("4_v7otb")
 
 [node name="spawn01" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.694527, 1.76686, -0.0966633)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.86362, 8.53496, 3.34571)
 
-[node name="sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 148.436, 153.491)
-light_color = Color(1, 0.0823529, 0.145098, 1)
-light_energy = 0.4
+[node name="test01" parent="." instance=ExtResource("5_ksmgo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.24628, 11.326, 9.78461)
 
-[node name="ground" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.3186, -0.286133, 15.286)
-material_override = SubResource("StandardMaterial3D_ykne3")
-use_collision = true
-size = Vector3(285.837, 0.427734, 387.595)
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8n0tx")
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.90331, -0.833237, -27.7512)
-use_collision = true
-radius = 4.31744
-height = 59.0552
-
-[node name="point_light" type="OmniLight3D" parent="CSGCylinder3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 31.3361, 0)
-omni_range = 250.0
-
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.90331, -1.28734, 61.6928)
-use_collision = true
-radius = 4.31744
-height = 59.0552
-
-[node name="point_light" type="OmniLight3D" parent="CSGCylinder3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 31.3361, 0)
-omni_range = 250.0
-
-[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.0819, -5.0569, 24.8951)
-use_collision = true
-radius = 4.31744
-height = 59.0552
-
-[node name="point_light" type="OmniLight3D" parent="CSGCylinder3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 31.3361, 0)
-omni_range = 250.0
-
-[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.4491, 0, -5.11489)
-use_collision = true
-radius = 4.31744
-height = 59.0552
-
-[node name="point_light" type="OmniLight3D" parent="CSGCylinder3D4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 31.3361, 0)
-omni_range = 250.0
-
-[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.922, -8.54691, -57.0669)
-use_collision = true
-radius = 4.31744
-height = 59.0552
-
-[node name="point_light" type="OmniLight3D" parent="CSGCylinder3D5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 31.3361, 0)
-omni_range = 250.0
-
-[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.2057, -3.87947, 48.3296)
-use_collision = true
-radius = 4.31744
-height = 59.0552
-
-[node name="point_light" type="OmniLight3D" parent="CSGCylinder3D6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 31.3361, 0)
-omni_range = 250.0
-
-[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.1865, -5.35559, -67.0204)
-use_collision = true
-radius = 4.31744
-height = 59.0552
-
-[node name="point_light" type="OmniLight3D" parent="CSGCylinder3D7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 31.3361, 0)
-omni_range = 250.0
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.972642, 0.0270472, 0.230728, -0.228271, 0.295628, 0.92763, -0.0431199, -0.95492, 0.293714, 0, 7.44544, 0)
