@@ -32,4 +32,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.24628, 11.326, 9.78461)
 environment = SubResource("Environment_8n0tx")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.972642, 0.0270472, 0.230728, -0.228271, 0.295628, 0.92763, -0.0431199, -0.95492, 0.293714, 0, 7.44544, 0)
+transform = Transform3D(0.972642, 0.0270472, 0.230728, -0.228271, 0.295628, 0.927629, -0.0431199, -0.95492, 0.293714, 0, 22.949, -4.82117)
+visible = false
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.27852, 23.7133)
+omni_range = 32.2832

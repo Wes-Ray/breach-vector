@@ -5,7 +5,13 @@ signal player_crashed
 
 @export var camera_rig : CameraRig
 
-@export var top_speed := 50.
+@export_category("foward speed")
+@export var max_speed := 80.
+@export var min_speed := 50.
+@export var forward_accel := 10.
+@export var forward_deccel := 14.
+
+var speed := min_speed
 
 @export_category("rotation speed")
 @export var pitch_speed := 3.5
@@ -44,13 +50,43 @@ func _process(delta: float) -> void:
 
 	basis = basis.orthonormalized()
 
-	var speed := 0.0
+	# var speed := min_speed
+	# if Input.is_action_pressed("throttle_up"):
+	# 	speed = max_speed
+	
+
 	if Input.is_action_pressed("throttle_up"):
-		speed = top_speed
+		speed = move_toward(
+			speed,
+			max_speed,
+			forward_accel * delta
+		)
+	else:
+		speed = move_toward(
+			speed,
+			min_speed,
+			forward_deccel * delta
+		)
+
+# 	if not is_zero_approx(roll_input):
+	# 	current_roll_speed = move_toward(
+	# 		current_roll_speed,
+	# 		roll_input * max_roll_speed,
+	# 		roll_accel * delta
+	# 	)
+	# else:
+	# 	current_roll_speed = move_toward(
+	# 		current_roll_speed,
+	# 		0.,
+	# 		roll_deccel * delta
+	# 	)
+
+	Logger.log("speed", speed)
 	velocity = forward * speed
 	move_and_slide()
 
 func _on_collision_area_body_entered(_body: Node3D) -> void:
 	# TODO: add explodies
+	# print("collied: ", _body)
 	player_crashed.emit()
 	queue_free()

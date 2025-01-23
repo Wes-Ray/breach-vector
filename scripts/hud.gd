@@ -10,6 +10,8 @@ class_name HUD
 @onready var invert_check := %InvertCheckButton
 @onready var sens_spinbox := %SensSpinBox
 @onready var setting_root := %Settings
+@onready var speedometer_root := %Speedometer
+@onready var speedometer_label := %SpeedometerLabel
 
 func _ready() -> void:
 	# keeps this script functioning when paused
@@ -39,6 +41,10 @@ func _process(_delta: float) -> void:
 			pause()
 	else:
 		Logger.log("mouse captured", true)
+	
+	# update speedometer
+	var current_speed :String= Logger.get_speed()
+	speedometer_label.text = current_speed
 
 func update_debug_label() -> void:
 	var result_str:= ""
@@ -57,7 +63,7 @@ func pause() -> void:
 	menu.show()
 	setting_root.show()
 	crosshair.hide()
-
+	speedometer_root.hide()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	get_tree().paused = true
 
@@ -65,6 +71,7 @@ func unpause() -> void:
 	menu.hide()
 	setting_root.hide()
 	crosshair.show()
+	speedometer_root.show()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	get_tree().paused = false
 

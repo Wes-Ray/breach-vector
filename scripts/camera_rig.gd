@@ -37,11 +37,6 @@ func _process(delta: float) -> void:
 	rotate(basis.z.normalized(), current_roll_speed * delta)
 
 func _input(event: InputEvent) -> void:
-	# TODO: temp, move this to the menu later
-	# https://docs.godotengine.org/en/stable/tutorials/platform/web/customizing_html5_shell.html#doc-customizing-html5-shell
-	# if event is InputEventMouseButton and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
-	#     Input.mouse_mode = Input.MOUSE_MODE_CAPTURED 
-	#     return
 
 	if not event is InputEventMouseMotion:
 		return

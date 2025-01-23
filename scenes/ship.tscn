@@ -16,6 +16,11 @@ script = ExtResource("1_mn80g")
 [node name="Model" parent="." instance=ExtResource("1_fgnbo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0608337, -0.767542)
 
+[node name="OmniLight3D" type="OmniLight3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.374317, 0.371923)
+light_color = Color(0.69, 0.67965, 0.621, 1)
+light_energy = 0.1
+
 [node name="collision_area" type="Area3D" parent="."]
 
 [node name="Collision" type="CollisionShape3D" parent="collision_area"]

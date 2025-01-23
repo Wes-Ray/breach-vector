@@ -1,0 +1,67 @@
+[gd_scene load_steps=11 format=3 uid="uid://dnbcg8p1b6u7d"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_0ip3g"]
+[ext_resource type="PackedScene" uid="uid://wk8ox7egbudr" path="res://scenes/ship.tscn" id="2_6o7nk"]
+[ext_resource type="PackedScene" uid="uid://bag23ibu3ddf1" path="res://scenes/camera_rig.tscn" id="3_6v8l0"]
+[ext_resource type="PackedScene" uid="uid://bv2g21feowrn3" path="res://scenes/hud.tscn" id="4_r4xaf"]
+[ext_resource type="PackedScene" uid="uid://diagcwhliv7xw" path="res://assets/levels/test_torus.glb" id="5_u3byi"]
+[ext_resource type="PackedScene" uid="uid://dnvohesyoa4nw" path="res://assets/levels/test02.glb" id="6_ncajq"]
+[ext_resource type="PackedScene" uid="uid://qvx83ajj5e0o" path="res://scenes/test_02_tunnel.tscn" id="7_26ctw"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n35ph"]
+
+[sub_resource type="Sky" id="Sky_hrfcp"]
+sky_material = SubResource("ProceduralSkyMaterial_n35ph")
+
+[sub_resource type="Environment" id="Environment_kqsj2"]
+background_mode = 2
+sky = SubResource("Sky_hrfcp")
+fog_enabled = true
+
+[node name="Test02" type="Node3D" node_paths=PackedStringArray("spawn_point")]
+script = ExtResource("1_0ip3g")
+spawn_point = NodePath("spawn")
+ship_scene = ExtResource("2_6o7nk")
+camera_scene = ExtResource("3_6v8l0")
+hud_scene = ExtResource("4_r4xaf")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(6.14427, 0, 0, 0, 5.36282, 0, 0, 0, 6.80325, -26.1983, -0.47414, -43.661)
+size = Vector3(42.1742, 0.284668, 34.3247)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(6.14427, 0, 0, 0, 5.36282, 0, 0, 0, 6.80325, 12.8558, 0.121052, 41.3779)
+radius = 1.20879
+height = 7.46981
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
+transform = Transform3D(6.14427, 0, 0, 0, 5.36282, 0, 0, 0, 6.80325, 38.2811, 0.121052, -4.38818)
+radius = 1.20879
+height = 7.46981
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="."]
+transform = Transform3D(6.14427, 0, 0, 0, 5.36282, 0, 0, 0, 6.80325, -34.9347, 0.121052, -21.8493)
+radius = 1.20879
+height = 7.46981
+
+[node name="spawn" type="Node3D" parent="."]
+transform = Transform3D(0.88791, -0.0978061, 0.4495, -0.0372324, 0.958651, 0.282138, -0.458508, -0.267249, 0.847554, 5.48702, 3.64563, 1.38122)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kqsj2")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7035, 11.7233, -11.4441)
+light_color = Color(1, 1, 0.611765, 1)
+light_energy = 3.955
+light_bake_mode = 1
+omni_range = 67.0889
+
+[node name="test_torus" parent="." instance=ExtResource("5_u3byi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.599, 4.24589, -16.1512)
+
+[node name="test02" parent="." instance=ExtResource("6_ncajq")]
+transform = Transform3D(0.281253, 0, -0.959634, 0, 1, 0, 0.959634, 0, 0.281253, -20.7351, 5.68069, -2.7144)
+
+[node name="test03" parent="." instance=ExtResource("7_26ctw")]
+transform = Transform3D(0.55032, 0, -0.834954, 0, 1, 0, 0.834954, 0, 0.55032, 14.5655, 11.4237, -11.9759)
