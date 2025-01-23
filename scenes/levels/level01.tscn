@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://blf6u0g6fcn5p"]
+[gd_scene load_steps=8 format=3 uid="uid://blf6u0g6fcn5p"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_fq4ff"]
 [ext_resource type="PackedScene" uid="uid://wk8ox7egbudr" path="res://scenes/ship.tscn" id="2_qao6g"]
 [ext_resource type="PackedScene" uid="uid://bag23ibu3ddf1" path="res://scenes/camera_rig.tscn" id="3_ey3w5"]
 [ext_resource type="PackedScene" uid="uid://bv2g21feowrn3" path="res://scenes/hud.tscn" id="4_qprsr"]
-[ext_resource type="PackedScene" uid="uid://ri48swcjy76g" path="res://scenes/levels/level_object_scenes/cave_01.tscn" id="5_00l3v"]
+[ext_resource type="PackedScene" uid="uid://bjfb3jmunjent" path="res://scenes/levels/level_object_scenes/cave02.tscn" id="6_fc6kl"]
+[ext_resource type="PackedScene" uid="uid://b8drbv6ajno0k" path="res://scenes/levels/level_object_scenes/landing_tunnel_2.tscn" id="6_g2ylb"]
 
 [sub_resource type="Environment" id="Environment_bvixm"]
 ambient_light_source = 2
@@ -15,76 +16,54 @@ fog_light_color = Color(0.4941, 0.538528, 0.61, 1)
 fog_density = 0.001
 adjustment_enabled = true
 
-[node name="Level01" type="Node3D" node_paths=PackedStringArray("spawn_point")]
+[node name="Level01" type="Node3D" node_paths=PackedStringArray("spawn_point", "debug_spawn_point")]
 script = ExtResource("1_fq4ff")
 spawn_point = NodePath("SpawnPoint")
+debug_spawn_point = NodePath("DebugSpawn1")
 ship_scene = ExtResource("2_qao6g")
 camera_scene = ExtResource("3_ey3w5")
 hud_scene = ExtResource("4_qprsr")
 
 [node name="SpawnPoint" type="Node3D" parent="."]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.098, -12.1037, 52.9639)
-omni_range = 37.3402
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.92135, -12.1037, 144.203)
-omni_range = 37.3402
-
-[node name="OmniLight3D3" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.6885, -12.1037, 225.089)
-omni_range = 37.3402
-
-[node name="OmniLight3D4" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 116.241, -12.1037, 294.758)
-omni_range = 37.3402
-
-[node name="OmniLight3D5" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 254.717, -12.1037, 275.777)
-omni_range = 37.3402
-
-[node name="OmniLight3D6" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 370.33, -12.1037, 378.879)
-omni_range = 37.3402
-
-[node name="OmniLight3D7" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 406.721, -12.1037, 478.82)
-omni_range = 37.3402
-
-[node name="OmniLight3D8" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 291.572, -12.1037, 565.182)
-omni_range = 37.3402
-
-[node name="OmniLight3D9" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106.355, -12.1037, 611.894)
-omni_range = 37.3402
-
-[node name="OmniLight3D10" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4238, -12.1037, 659.149)
-omni_range = 37.3402
-
-[node name="OmniLight3D11" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -168.483, -12.1037, 650.458)
-omni_range = 37.3402
-
-[node name="OmniLight3D12" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -198.356, -12.1037, 746.054)
-omni_range = 37.3402
-
-[node name="OmniLight3D13" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135.35, -12.1037, 809.06)
-omni_range = 37.3402
-
-[node name="OmniLight3D14" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4491, -12.1037, 790.593)
-omni_range = 37.3402
-
-[node name="OmniLight3D15" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.4961, -12.1037, 892.163)
-omni_range = 37.3402
+[node name="DebugSpawn1" type="Node3D" parent="."]
+transform = Transform3D(-0.137292, -0.718412, -0.681934, -0.247088, 0.691529, -0.678775, 0.959217, 0.0753075, -0.272453, 461.839, 58.7895, -327.708)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_bvixm")
 
-[node name="cave01" parent="." instance=ExtResource("5_00l3v")]
+[node name="cave02" parent="." instance=ExtResource("6_fc6kl")]
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 60.3485)
+light_color = Color(0.89, 0.848467, 0.712, 1)
+omni_range = 20.7509
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 505.146, 60.6766, -983.961)
+light_color = Color(0.89, 0.848467, 0.712, 1)
+light_energy = 4.771
+omni_range = 20.7509
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 505.044, 58.8535, -1098.24)
+light_color = Color(0.6319, 0.825475, 0.89, 1)
+light_energy = 4.771
+omni_range = 20.7509
+
+[node name="OmniLight3D10" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 505.044, 58.8535, -1238.85)
+light_color = Color(0.6319, 0.825475, 0.89, 1)
+light_energy = 4.771
+omni_range = 20.7509
+
+[node name="OmniLight3D16" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 505.044, 58.8535, -1374.04)
+light_color = Color(0.6319, 0.825475, 0.89, 1)
+light_energy = 4.771
+omni_range = 20.7509
+
+[node name="landing_tunnel2" parent="Lights" instance=ExtResource("6_g2ylb")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 504.992, 55.9785, -991.25)

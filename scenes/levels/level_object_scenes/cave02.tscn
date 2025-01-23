@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjfb3jmunjent"]
+
+[ext_resource type="PackedScene" uid="uid://c1iuc3wy88epp" path="res://assets/levels/cave02.glb" id="1_yaw3p"]
+[ext_resource type="Script" path="res://scripts/collision_shape_3d_util.gd" id="2_ng2xs"]
+
+[node name="cave02" instance=ExtResource("1_yaw3p")]
+
+[node name="CollisionShape3D" parent="cave02/StaticBody3D" index="0"]
+script = ExtResource("2_ng2xs")

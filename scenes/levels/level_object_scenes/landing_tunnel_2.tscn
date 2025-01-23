@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8drbv6ajno0k"]
+
+[ext_resource type="PackedScene" uid="uid://b75un0dfbg2n" path="res://assets/levels/landing_tunnel2.glb" id="1_p8pgm"]
+[ext_resource type="Script" path="res://scripts/collision_shape_3d_util.gd" id="2_rv3o8"]
+
+[node name="landing_tunnel2" instance=ExtResource("1_p8pgm")]
+
+[node name="CollisionShape3D" parent="Tunnel/StaticBody3D" index="0"]
+script = ExtResource("2_rv3o8")

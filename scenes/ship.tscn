@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/ship.gd" id="1_mn80g"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2d3l7"]
-size = Vector3(0.6922, 0.0853882, 0.848694)
+size = Vector3(0.526955, 0.0853882, 0.848694)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vkq2q"]
 radius = 0.0518926
@@ -24,7 +24,7 @@ light_energy = 0.1
 [node name="collision_area" type="Area3D" parent="."]
 
 [node name="Collision" type="CollisionShape3D" parent="collision_area"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00558472, -0.0161324, -0.800429)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00128547, -0.0161324, -0.800429)
 shape = SubResource("BoxShape3D_2d3l7")
 
 [node name="ignored" type="CollisionShape3D" parent="."]
